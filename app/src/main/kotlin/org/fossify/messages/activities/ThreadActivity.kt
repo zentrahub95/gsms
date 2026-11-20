@@ -464,7 +464,6 @@ class ThreadActivity : SimpleActivity() {
 
                 setupThreadTitle()
                 setupSIMSelector()
-                updateMessageType()
                 callback()
             }
         }
@@ -859,7 +858,6 @@ class ThreadActivity : SimpleActivity() {
         val textColor = getProperTextColor()
 
         binding.messageHolder.apply {
-            threadSendMessage.setTextColor(textColor)
             threadSendMessage.compoundDrawables.forEach {
                 it?.applyColorFilter(textColor)
             }
@@ -1284,7 +1282,6 @@ class ThreadActivity : SimpleActivity() {
 
         participants.add(contact)
         showSelectedContacts()
-        updateMessageType()
     }
 
     private fun markAsUnread() {
@@ -1579,7 +1576,6 @@ class ThreadActivity : SimpleActivity() {
             }
         }
 
-        updateMessageType()
     }
 
     private fun sendMessage() {
@@ -1786,7 +1782,6 @@ class ThreadActivity : SimpleActivity() {
         participants =
             participants.filter { it.rawId != id }.toMutableList() as ArrayList<SimpleContact>
         showSelectedContacts()
-        updateMessageType()
     }
 
     private fun getPhoneNumbersFromIntent(): ArrayList<String> {
@@ -1908,16 +1903,6 @@ class ThreadActivity : SimpleActivity() {
         val isGroupMms = participants.size > 1 && config.sendGroupMessageMMS
         val isLongMmsMessage = isLongMmsMessage(text)
         return getAttachmentSelections().isNotEmpty() || isGroupMms || isLongMmsMessage
-    }
-
-    private fun updateMessageType() {
-        val text = binding.messageHolder.threadTypeMessage.text.toString()
-        val stringId = if (isMmsMessage(text)) {
-            R.string.mms
-        } else {
-            R.string.sms
-        }
-        binding.messageHolder.threadSendMessage.setText(stringId)
     }
 
     private fun showScheduledMessageInfo(message: Message) {
