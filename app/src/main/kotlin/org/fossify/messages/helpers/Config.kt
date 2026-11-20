@@ -20,6 +20,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getInt(THEME_MODE, THEME_MODE_SYSTEM)
         set(themeMode) = prefs.edit().putInt(THEME_MODE, themeMode).apply()
 
+    var defaultLanguageApplied: Boolean
+        get() = prefs.getBoolean(DEFAULT_LANGUAGE_APPLIED, false)
+        set(defaultLanguageApplied) = prefs.edit().putBoolean(DEFAULT_LANGUAGE_APPLIED, defaultLanguageApplied).apply()
+
     var showCharacterCounter: Boolean
         get() = prefs.getBoolean(SHOW_CHARACTER_COUNTER, false)
         set(showCharacterCounter) = prefs.edit()

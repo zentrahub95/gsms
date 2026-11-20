@@ -164,12 +164,13 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupCustomizeColors() = binding.apply {
+        val items = arrayListOf(
+            RadioItem(THEME_MODE_SYSTEM, getString(R.string.theme_system)),
+            RadioItem(THEME_MODE_DARK, getString(R.string.theme_dark)),
+            RadioItem(THEME_MODE_LIGHT, getString(R.string.theme_light))
+        )
+        settingsThemeValue.text = items.first { it.id == config.themeMode }.title
         settingsColorCustomizationHolder.setOnClickListener {
-            val items = arrayListOf(
-                RadioItem(THEME_MODE_SYSTEM, getString(R.string.theme_system)),
-                RadioItem(THEME_MODE_DARK, getString(R.string.theme_dark)),
-                RadioItem(THEME_MODE_LIGHT, getString(R.string.theme_light))
-            )
             RadioGroupDialog(this@SettingsActivity, items, config.themeMode) {
                 config.themeMode = it as Int
                 recreate()

@@ -127,3 +127,5 @@ const val THEME_MODE = "theme_mode"
 const val THEME_MODE_SYSTEM = 0
 const val THEME_MODE_DARK = 1
 const val THEME_MODE_LIGHT = 2
+
+const val DEFAULT_LANGUAGE_APPLIED = "default_language_applied"
