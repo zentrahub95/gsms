@@ -53,7 +53,9 @@ import org.fossify.messages.R
 import org.fossify.messages.databases.MessagesDatabase
 import org.fossify.messages.helpers.AttachmentUtils.parseAttachmentNames
 import org.fossify.messages.helpers.Config
+import org.fossify.messages.helpers.DAY_MILLIS
 import org.fossify.messages.helpers.FILE_SIZE_NONE
+import org.fossify.messages.helpers.QUARANTINE_RETENTION_DAYS
 import org.fossify.messages.helpers.MAX_MESSAGE_LENGTH
 import org.fossify.messages.helpers.MESSAGES_LIMIT
 import org.fossify.messages.helpers.MessagingCache
@@ -65,6 +67,7 @@ import org.fossify.messages.interfaces.ConversationsDao
 import org.fossify.messages.interfaces.DraftsDao
 import org.fossify.messages.interfaces.MessageAttachmentsDao
 import org.fossify.messages.interfaces.MessagesDao
+import org.fossify.messages.interfaces.QuarantineDao
 import org.fossify.messages.messaging.MessagingUtils
 import org.fossify.messages.messaging.MessagingUtils.Companion.ADDRESS_SEPARATOR
 import org.fossify.messages.messaging.SmsSender
@@ -96,6 +99,9 @@ val Context.messageAttachmentsDB: MessageAttachmentsDao
 
 val Context.messagesDB: MessagesDao
     get() = getMessagesDB().MessagesDao()
+
+val Context.quarantineDB: QuarantineDao
+    get() = getMessagesDB().QuarantineDao()
 
 val Context.draftsDB: DraftsDao
     get() = getMessagesDB().DraftsDao()
@@ -1372,4 +1378,8 @@ fun Context.copyToUri(src: Uri, dst: Uri) {
             input.copyTo(out)
         }
     }
+}
+
+fun Context.purgeExpiredQuarantine() {
+    quarantineDB.deleteOlderThan(System.currentTimeMillis() - QUARANTINE_RETENTION_DAYS * DAY_MILLIS)
 }

@@ -34,7 +34,7 @@
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_launcher_name"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
 
@@ -145,6 +145,12 @@
             android:exported="false"
             android:label="@string/blocked_keywords"
             android:parentActivityName=".activities.SettingsActivity" />
+
+        <activity
+            android:name=".activities.QuarantineActivity"
+            android:exported="false"
+            android:label="@string/quarantine_title"
+            android:parentActivityName=".activities.MainActivity" />
 
         <activity
             android:name=".activities.VCardViewerActivity"

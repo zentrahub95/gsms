@@ -178,6 +178,7 @@ class MainActivity : SimpleActivity() {
         binding.mainMenu.requireToolbar().setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.show_recycle_bin -> launchRecycleBin()
+                R.id.show_quarantine -> launchQuarantine()
                 R.id.show_archived -> launchArchivedConversations()
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
@@ -614,6 +615,11 @@ class MainActivity : SimpleActivity() {
     private fun launchRecycleBin() {
         hideKeyboard()
         startActivity(Intent(applicationContext, RecycleBinConversationsActivity::class.java))
+    }
+
+    private fun launchQuarantine() {
+        hideKeyboard()
+        startActivity(Intent(applicationContext, QuarantineActivity::class.java))
     }
 
     private fun launchArchivedConversations() {

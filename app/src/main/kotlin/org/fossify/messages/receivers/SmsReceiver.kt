@@ -19,13 +19,17 @@ import org.fossify.messages.extensions.getThreadId
 import org.fossify.messages.extensions.insertNewSMS
 import org.fossify.messages.extensions.insertOrUpdateConversation
 import org.fossify.messages.extensions.messagesDB
+import org.fossify.messages.extensions.purgeExpiredQuarantine
+import org.fossify.messages.extensions.quarantineDB
 import org.fossify.messages.extensions.shouldUnarchive
 import org.fossify.messages.extensions.showReceivedMessageNotification
 import org.fossify.messages.extensions.updateConversationArchivedStatus
+import org.fossify.messages.helpers.PromoFilter
 import org.fossify.messages.helpers.ReceiverUtils.isMessageFilteredOut
 import org.fossify.messages.helpers.refreshConversations
 import org.fossify.messages.helpers.refreshMessages
 import org.fossify.messages.models.Message
+import org.fossify.messages.models.QuarantinedMessage
 
 class SmsReceiver : BroadcastReceiver() {
 
@@ -47,6 +51,13 @@ class SmsReceiver : BroadcastReceiver() {
 
                 if (isMessageFilteredOut(appContext, body)) return@ensureBackgroundThread
                 if (appContext.isNumberBlocked(address)) return@ensureBackgroundThread
+                if (PromoFilter.classify(appContext, address, body) == PromoFilter.Verdict.QUARANTINE) {
+                    appContext.purgeExpiredQuarantine()
+                    appContext.quarantineDB.insert(
+                        QuarantinedMessage(address = address, body = body, date = System.currentTimeMillis())
+                    )
+                    return@ensureBackgroundThread
+                }
                 if (appContext.baseConfig.blockUnknownNumbers) {
                     val privateCursor =
                         appContext.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
