@@ -858,10 +858,7 @@ class ThreadActivity : SimpleActivity() {
         val textColor = getProperTextColor()
 
         binding.messageHolder.apply {
-            threadSendMessage.compoundDrawables.forEach {
-                it?.applyColorFilter(textColor)
-            }
-
+            threadSendMessage.applyColorFilter(textColor)
             confirmManageContacts.applyColorFilter(textColor)
             threadAddAttachment.applyColorFilter(textColor)
 
@@ -2016,17 +2013,9 @@ class ThreadActivity : SimpleActivity() {
     }
 
     private fun updateSendButtonDrawable() {
-        val drawableResId = if (isScheduledMessage) {
-            R.drawable.ic_schedule_send_vector
-        } else {
-            R.drawable.ic_send_vector
-        }
-        ResourcesCompat.getDrawable(resources, drawableResId, theme)?.apply {
-            applyColorFilter(getProperTextColor())
-            binding.messageHolder.threadSendMessage.setCompoundDrawablesWithIntrinsicBounds(
-                null, this, null, null
-            )
-        }
+        binding.messageHolder.threadSendMessage.setImageResource(
+            if (isScheduledMessage) R.drawable.ic_schedule_send_vector else R.drawable.ic_send_vector
+        )
     }
 
     private fun buildScheduledMessage(text: String, subscriptionId: Int, messageId: Long): Message {

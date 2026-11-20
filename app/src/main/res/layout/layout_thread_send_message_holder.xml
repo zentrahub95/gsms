@@ -165,7 +165,7 @@
         tools:ignore="HardcodedText"
         tools:visibility="visible" />
 
-    <org.fossify.commons.views.MyButton
+    <ImageView
         android:id="@+id/thread_send_message"
         android:layout_width="@dimen/normal_icon_size"
         android:layout_height="@dimen/normal_icon_size"
@@ -174,8 +174,8 @@
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="false"
         android:contentDescription="@string/ok"
-        android:drawableTop="@drawable/ic_send_vector"
-        android:paddingVertical="@dimen/small_margin"
+        android:padding="@dimen/normal_margin"
+        android:src="@drawable/ic_send_vector"
         app:layout_constraintBottom_toBottomOf="@+id/thread_type_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/thread_type_message" />
