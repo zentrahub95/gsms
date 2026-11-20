@@ -9,6 +9,7 @@ open class SimpleActivity : BaseSimpleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         GsmsTheme.apply(this)
         super.onCreate(savedInstanceState)
+        theme.applyStyle(R.style.GsmsTextOverlay, true)
     }
 
     override fun getAppIconIDs() = arrayListOf(

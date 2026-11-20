@@ -1,0 +1,8 @@
+<resources>
+    <style name="GsmsTextOverlay">
+        <item name="colorControlActivated">@color/color_accent</item>
+        <item name="android:colorControlActivated">@color/color_accent</item>
+        <item name="android:textColorHighlight">@color/accent_highlight</item>
+        <item name="android:textCursorDrawable">@drawable/cursor_accent</item>
+    </style>
+</resources>
