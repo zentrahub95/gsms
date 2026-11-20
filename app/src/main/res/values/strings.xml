@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_launcher_name">Gsms</string>
-    <string name="quarantine_title">Karantina promo</string>
-    <string name="quarantine_empty">Tidak ada SMS promo di karantina</string>
-    <string name="quarantine_restore">Pulihkan</string>
-    <string name="quarantine_delete">Hapus</string>
-    <string name="quarantine_menu">SMS promo (karantina)</string>
+    <string name="quarantine_title">Promo quarantine</string>
+    <string name="quarantine_empty">No messages in quarantine</string>
+    <string name="quarantine_restore">Restore</string>
+    <string name="quarantine_delete">Delete</string>
+    <string name="quarantine_menu">Quarantine (promo and blocked)</string>
+    <string name="about_description">Gsms (Guard SMS) automatically quarantines Indonesian promo SMS and messages from blocked senders for 7 days, so they never clutter your inbox and can still be restored.</string>
+    <string name="about_attribution">Based on Fossify Messages, GPLv3 license.</string>
+    <string name="about_version">Version %1$s</string>
     <string name="type_a_message">Type a message…</string>
     <string name="message_not_sent_short">Message not sent</string>
     <string name="message_not_sent_touch_retry">Not sent. Touch to retry.</string>

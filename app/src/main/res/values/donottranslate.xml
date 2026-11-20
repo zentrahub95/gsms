@@ -1,6 +1,7 @@
 <resources>
     <string name="package_name">org.fossify.gsms</string>
     <string name="app_name">Gsms</string>
+    <string name="about_name">Gsms - Guard SMS</string>
 
     <string name="mms_file_size_limit_100kb">100KB</string>
     <string name="mms_file_size_limit_200kb">200KB</string>

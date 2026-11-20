@@ -11,7 +11,9 @@ Setiap SMS masuk diperiksa dengan urutan berikut:
 3. Pengirim alfanumerik (bukan nomor, mis. CHATIME) dan isi pesan memuat kata promo (gratis, promo, diskon, undian, hadiah, cashback, kupon, "beli 1", "s&k", tukar, tautan): masuk karantina.
 4. Selain itu: masuk inbox seperti biasa.
 
-Pesan karantina tidak muncul di inbox dan tidak memunculkan notifikasi. Buka menu titik tiga di layar utama, pilih "SMS promo (karantina)" untuk memulihkan atau menghapusnya. Pesan karantina dihapus otomatis setelah 7 hari.
+Pesan dari nomor yang diblokir atau berisi kata kunci terblokir (termasuk daftar blokir bawaan dari aplikasi lain) juga masuk karantina, bukan dibuang, sehingga OTP atau tagihan dari pengirim yang terlanjur diblokir bisa dipulihkan.
+
+Pesan karantina tidak muncul di inbox dan tidak memunculkan notifikasi. Buka menu titik tiga di layar utama, pilih "Karantina (promo dan diblokir)" untuk memulihkan atau menghapusnya. Pesan karantina dihapus otomatis setelah 7 hari.
 
 ## Batasan
 

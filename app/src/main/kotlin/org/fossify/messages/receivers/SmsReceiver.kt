@@ -49,20 +49,12 @@ class SmsReceiver : BroadcastReceiver() {
                 val status = parts.last().status
                 val body = buildString { parts.forEach { append(it.messageBody.orEmpty()) } }
 
-                if (isMessageFilteredOut(appContext, body)) return@ensureBackgroundThread
-                if (appContext.isNumberBlocked(address)) return@ensureBackgroundThread
-                if (PromoFilter.classify(appContext, address, body) == PromoFilter.Verdict.QUARANTINE) {
+                if (isQuarantined(appContext, address, body)) {
                     appContext.purgeExpiredQuarantine()
                     appContext.quarantineDB.insert(
                         QuarantinedMessage(address = address, body = body, date = System.currentTimeMillis())
                     )
                     return@ensureBackgroundThread
-                }
-                if (appContext.baseConfig.blockUnknownNumbers) {
-                    val privateCursor =
-                        appContext.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-                    val result = SimpleContactsHelper(appContext).existsSync(address, privateCursor)
-                    if (result == ContactLookupResult.NotFound) return@ensureBackgroundThread
                 }
 
                 val date = System.currentTimeMillis()
@@ -83,6 +75,17 @@ class SmsReceiver : BroadcastReceiver() {
                 pending.finish()
             }
         }
+    }
+
+    private fun isQuarantined(context: Context, address: String, body: String): Boolean {
+        if (isMessageFilteredOut(context, body) || context.isNumberBlocked(address)) return true
+        if (context.baseConfig.blockUnknownNumbers) {
+            val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+            if (SimpleContactsHelper(context).existsSync(address, privateCursor) == ContactLookupResult.NotFound) {
+                return true
+            }
+        }
+        return PromoFilter.classify(context, address, body) == PromoFilter.Verdict.QUARANTINE
     }
 
     private fun handleMessageSync(

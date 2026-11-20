@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="quarantine_title">Karantina</string>
+    <string name="quarantine_empty">Tidak ada pesan di karantina</string>
+    <string name="quarantine_restore">Pulihkan</string>
+    <string name="quarantine_delete">Hapus</string>
+    <string name="quarantine_menu">Karantina (promo dan diblokir)</string>
+    <string name="about_description">Gsms (Guard SMS) otomatis mengarantina SMS promo Indonesia dan pesan dari pengirim yang diblokir selama 7 hari, sehingga inbox tetap bersih dan pesan masih bisa dipulihkan.</string>
+    <string name="about_attribution">Berbasis Fossify Messages, lisensi GPLv3.</string>
+    <string name="about_version">Versi %1$s</string>
     <string name="type_a_message">Ketik pesan…</string>
     <string name="message_not_sent_short">Pesan tidak terkirim</string>
     <string name="message_not_sent_touch_retry">Tidak terkirim. Sentuh untuk mencoba lagi.</string>
