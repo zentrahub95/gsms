@@ -16,6 +16,10 @@ class Config(context: Context) : BaseConfig(context) {
 
     fun getUseSIMIdAtNumber(number: String) = prefs.getInt(USE_SIM_ID_PREFIX + number, 0)
 
+    var themeMode: Int
+        get() = prefs.getInt(THEME_MODE, THEME_MODE_SYSTEM)
+        set(themeMode) = prefs.edit().putInt(THEME_MODE, themeMode).apply()
+
     var showCharacterCounter: Boolean
         get() = prefs.getBoolean(SHOW_CHARACTER_COUNTER, false)
         set(showCharacterCounter) = prefs.edit()

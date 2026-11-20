@@ -38,6 +38,9 @@ import org.fossify.messages.extensions.messagesDB
 import org.fossify.messages.helpers.FILE_SIZE_100_KB
 import org.fossify.messages.helpers.FILE_SIZE_1_MB
 import org.fossify.messages.helpers.FILE_SIZE_200_KB
+import org.fossify.messages.helpers.THEME_MODE_DARK
+import org.fossify.messages.helpers.THEME_MODE_LIGHT
+import org.fossify.messages.helpers.THEME_MODE_SYSTEM
 import org.fossify.messages.helpers.FILE_SIZE_2_MB
 import org.fossify.messages.helpers.FILE_SIZE_300_KB
 import org.fossify.messages.helpers.FILE_SIZE_600_KB
@@ -162,7 +165,15 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupCustomizeColors() = binding.apply {
         settingsColorCustomizationHolder.setOnClickListener {
-            startCustomizationActivity()
+            val items = arrayListOf(
+                RadioItem(THEME_MODE_SYSTEM, getString(R.string.theme_system)),
+                RadioItem(THEME_MODE_DARK, getString(R.string.theme_dark)),
+                RadioItem(THEME_MODE_LIGHT, getString(R.string.theme_light))
+            )
+            RadioGroupDialog(this@SettingsActivity, items, config.themeMode) {
+                config.themeMode = it as Int
+                recreate()
+            }
         }
     }
 

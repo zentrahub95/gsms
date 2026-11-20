@@ -9,6 +9,10 @@
     <string name="about_description">Gsms (Guard SMS) automatically quarantines Indonesian promo SMS and messages from blocked senders for 7 days, so they never clutter your inbox and can still be restored.</string>
     <string name="about_attribution">Based on Fossify Messages, GPLv3 license.</string>
     <string name="about_version">Version %1$s</string>
+    <string name="theme_label">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
     <string name="type_a_message">Type a message…</string>
     <string name="message_not_sent_short">Message not sent</string>
     <string name="message_not_sent_touch_retry">Not sent. Touch to retry.</string>

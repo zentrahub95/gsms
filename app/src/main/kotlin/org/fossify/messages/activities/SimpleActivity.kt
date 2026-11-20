@@ -1,9 +1,16 @@
 package org.fossify.messages.activities
 
+import android.os.Bundle
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.messages.R
+import org.fossify.messages.helpers.GsmsTheme
 
 open class SimpleActivity : BaseSimpleActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        GsmsTheme.apply(this)
+        super.onCreate(savedInstanceState)
+    }
+
     override fun getAppIconIDs() = arrayListOf(
         R.mipmap.ic_launcher_red,
         R.mipmap.ic_launcher_pink,

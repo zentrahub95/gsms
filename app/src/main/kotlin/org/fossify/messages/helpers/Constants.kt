@@ -122,3 +122,8 @@ fun generateStableId(type: Int, key: Long): Long {
     require(type in 0 until (1 shl THREAD_TYPE_BITS))
     return (type.toLong() shl THREAD_TYPE_SHIFT) or (key and THREAD_KEY_MASK)
 }
+
+const val THEME_MODE = "theme_mode"
+const val THEME_MODE_SYSTEM = 0
+const val THEME_MODE_DARK = 1
+const val THEME_MODE_LIGHT = 2
