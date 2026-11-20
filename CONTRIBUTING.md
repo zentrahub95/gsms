@@ -1,8 +1,5 @@
-### Reporting
-Before you report something, read the reporting rules [here](https://github.com/FossifyOrg/General-Discussion#how-do-i-suggest-an-improvement-ask-a-question-or-report-an-issue) please.
+# Kontribusi
 
-### Contributing as a developer
-Some instructions about code style and everything that has to be done to increase the chance of your code getting accepted can be found at the [General Discussion](https://github.com/FossifyOrg/General-Discussion#contribution-rules-for-developers) section. 
-
-### Contributing as a non developer
-In case you just want to for example improve a translation, you can find the way of doing it [here](https://github.com/FossifyOrg/General-Discussion#how-can-i-suggest-an-edit-to-a-file).
+- Lapor bug atau usul fitur lewat Issues di https://github.com/zentrahub95/gsms/issues.
+- Kontribusi daftar pengirim promo: kirim pull request yang mengubah `app/src/main/assets/promo_senders.json`.
+- Jangan lapor bug Gsms ke proyek Fossify; Gsms dikelola terpisah.
